@@ -1,0 +1,7 @@
+{
+  "name": "paper-interval-slider#gh-pages",
+  "private": true,
+  "dependencies": {
+    "paper-interval-slider": "ewgenius/paper-interval-slider#master"
+  }
+}
