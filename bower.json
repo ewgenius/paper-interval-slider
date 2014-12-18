@@ -1,14 +1,14 @@
 {
   "name": "paper-interval-slider",
-  "private": false,
   "dependencies": {
-    "font-roboto": "Polymer/font-roboto#^0.5.0",
     "paper-input": "Polymer/paper-input#^0.5.0",
-    "paper-progress": "Polymer/paper-progress#^0.5.0",
     "core-a11y-keys": "Polymer/core-a11y-keys#^0.5.0",
     "core-interval": "~0.0.1",
     "paper-interval-progress": "~0.0.1"
   },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  }
   "version": "0.0.1",
   "homepage": "https://github.com/ewgenius/paper-interval-slider",
   "authors": [
