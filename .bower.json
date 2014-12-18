@@ -1,22 +1,37 @@
 {
   "name": "paper-interval-slider",
-  "private": false,
+  "version": "0.0.1",
+  "authors": [
+    "Ewgenius <ewgeniux@gmail.com>"
+  ],
+  "description": "interval slider",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "slider"
+  ],
+  "main": "end points.",
+  "license": "MIT",
+  "homepage": "https://github.com/ewgenius/paper-interval-slider",
+  "ignore": [
+    "/.*",
+    "/tests/",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "font-roboto": "Polymer/font-roboto#^0.5.0",
+    "polymer": "Polymer/polymer#^0.5.2",
+    "core-interval": "~0.0.1",
+    "paper-interval-progress": "~0.0.1",
     "paper-input": "Polymer/paper-input#^0.5.0",
-    "paper-progress": "Polymer/paper-progress#^0.5.0",
     "core-a11y-keys": "Polymer/core-a11y-keys#^0.5.0"
   },
-  "version": "0.0.1",
-  "homepage": "https://github.com/polymer/paper-interval-slider",
-  "_release": "0.0.1",
-  "_resolution": {
-    "type": "version",
-    "tag": "0.0.1",
-    "commit": "e08291c22765ce2e5794e8f5b1ea2ea4620ac61e"
-  },
-  "_source": "git://github.com/polymer/paper-interval-slider.git",
-  "_target": "~0.0.1",
-  "_originalSource": "polymer/paper-interval-slider",
-  "_direct": true
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  }
 }
