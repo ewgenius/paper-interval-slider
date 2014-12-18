@@ -21,38 +21,32 @@ Use `min` and `max` to specify the slider range.  Default is 0 to 100.
 
 Example:
 
-    <paper-interval-slider min="10" max="200" value="110"></paper-interval-slider>
+    <paper-interval-slider min="10" max="200" valueA="110" valueB="110"></paper-interval-slider>
 
 Styling slider:
 
 To change the slider progress bar color:
 
-    paper-interval-slider::shadow #sliderBar::shadow #activeProgress {
+    paper-interval-slider::shadow #sliderBar::shadow #progress {
       background-color: #0f9d58;
     }
 
 To change the slider knob color:
 
-    paper-interval-slider::shadow #sliderKnobInner {
+    paper-interval-slider::shadow .knobInner {
       background-color: #0f9d58;
     }
 
 To change the slider pin color:
 
-    paper-interval-slider::shadow #sliderKnobInner::before {
+    paper-interval-slider::shadow .knob::before {
       background-color: #0f9d58;
     }
 
 To change the slider pin's font color:
 
-    paper-interval-slider::shadow #sliderKnobA > #sliderKnobInner::after {
+    paper-interval-slider::shadow .knob > .knobInner::after {
       color: #0f9d58
-    }
-
-To change the slider secondary progress bar color:
-
-    paper-interval-slider::shadow #sliderBar::shadow #secondaryProgress {
-      background-color: #0f9d58;
     }
 
 @group Paper Elements
@@ -194,10 +188,19 @@ To change the slider secondary progress bar color:
       editable: false,
 
       /**
-       * The immediate value of the slider.  This value is updated while the user
+       * The immediate value of the point A.  This value is updated while the user
        * is dragging the slider.
        *
-       * @attribute immediateValue
+       * @attribute immediateValueA
+       * @type number
+       * @default 0
+       */
+
+      /**
+       * The immediate value of the point B.  This value is updated while the user
+       * is dragging the slider.
+       *
+       * @attribute immediateValueB
        * @type number
        * @default 0
        */
