@@ -274,14 +274,14 @@ To change the slider secondary progress bar color:
 
       positionKnobA: function (ratio) {
         this.immediateValueA = this.calcStep(this.calcKnobPosition(ratio)) || 0;
-        this._ratio = this.snaps ? this.calcRatio(this.immediateValueA) : ratio;
-        this.$.sliderKnobA.style.left = this._ratio * 100 + '%';
+        this._ratioA = this.snaps ? this.calcRatio(this.immediateValueA) : ratio;
+        this.$.sliderKnobA.style.left = this._ratioA * 100 + '%';
       },
 
       positionKnobB: function (ratio) {
         this.immediateValueB = this.calcStep(this.calcKnobPosition(ratio)) || 0;
-        this._ratio = this.snaps ? this.calcRatio(this.immediateValueB) : ratio;
-        this.$.sliderKnobB.style.left = this._ratio * 100 + '%';
+        this._ratioB = this.snaps ? this.calcRatio(this.immediateValueB) : ratio;
+        this.$.sliderKnobB.style.left = this._ratioB * 100 + '%';
       },
 
       inputChange: function () {
@@ -295,8 +295,13 @@ To change the slider secondary progress bar color:
 
       trackStart: function (e) {
         this._w = this.$.sliderBar.offsetWidth;
-        this._x = this._ratio * this._w;
-        this._startx = this._x || 0;
+        if (e.path[1].id == 'sliderKnobA') {
+          this._xA = this._ratioA * this._w;
+          this._startx = this._xA || 0;
+        } else if (e.path[1].id == 'sliderKnobB') {
+          this._xB = this._ratioB * this._w;
+          this._startx = this._xB || 0;
+        }
         this._minx = -this._startx;
         this._maxx = this._w - this._startx;
         e.path[1].classList.add('dragging');
@@ -306,14 +311,14 @@ To change the slider secondary progress bar color:
 
       trackx: function (e) {
         var x = Math.min(this._maxx, Math.max(this._minx, e.dx));
-        this._x = this._startx + x;
         var immediateValue;
         if (e.path[1].id == 'sliderKnobA') {
-          this.immediateValueA = this.calcStep(this.calcKnobPosition(this._x / this._w)) || 0;
+          this._xA = this._startx + x;
+          this.immediateValueA = this.calcStep(this.calcKnobPosition(this._xA / this._w)) || 0;
           immediateValue = this.immediateValueA;
-        }
-        else if (e.path[1].id == 'sliderKnobB') {
-          this.immediateValueB = this.calcStep(this.calcKnobPosition(this._x / this._w)) || 0;
+        } else if (e.path[1].id == 'sliderKnobB') {
+          this._xB = this._startx + x;
+          this.immediateValueB = this.calcStep(this.calcKnobPosition(this._xB / this._w)) || 0;
           immediateValue = this.immediateValueB;
         }
         var s = e.path[1].style;
