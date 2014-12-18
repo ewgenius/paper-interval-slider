@@ -1,0 +1,44 @@
+{
+  "name": "paper-interval-progress",
+  "version": "0.0.1",
+  "authors": [
+    "Ewgenius <ewgeniux@gmail.com>"
+  ],
+  "description": "The interval progress bar is for situation where determined start and",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed"
+  ],
+  "main": "end points.",
+  "license": "MIT",
+  "homepage": "https://github.com/ewgenius/paper-interval-progress",
+  "ignore": [
+    "/.*",
+    "/tests/",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2",
+    "core-interval": "~0.0.1"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  },
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "95e7a5afa0ab66e3f2ddef9b7ad2d5f1b2211d26"
+  },
+  "_source": "git://github.com/ewgenius/paper-interval-progress.git",
+  "_target": "~0.0.1",
+  "_originalSource": "paper-interval-progress",
+  "_direct": true
+}

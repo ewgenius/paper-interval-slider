@@ -1,0 +1,166 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <core-interval></core-interval>
+
+@element core-interval
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://polymerlabs.github.io/core-interval
+-->
+<polymer-element name="core-interval" attributes="valueA valueB min min step ratioA ratioB interval minInterval">
+
+  <template>
+
+    <link rel="stylesheet" href="core-interval.css">
+
+  </template>
+
+  <script>
+
+    Polymer('core-interval', {
+      /**
+       * The number that represents the current value.
+       *
+       * @attribute valueA
+       * @type number
+       * @default 0
+       */
+      valueA: 0,
+
+      /**
+       * The number that represents the current value.
+       *
+       * @attribute valueB
+       * @type number
+       * @default 0
+       */
+      valueB: 0,
+
+      /**
+       * The number that indicates the minimum value of the range.
+       *
+       * @attribute min
+       * @type number
+       * @default 0
+       */
+      min: 0,
+
+      /**
+       * The number that indicates the maximum value of the range.
+       *
+       * @attribute max
+       * @type number
+       * @default 100
+       */
+      max: 100,
+
+      /**
+       * Specifies the value granularity of the range's value.
+       *
+       * @attribute step
+       * @type number
+       * @default 1
+       */
+      step: 1,
+
+      /**
+       * Returns the ratio of the valueA.
+       *
+       * @attribute ratioA
+       * @type number
+       * @default 0
+       */
+      ratioA: 0,
+
+      /**
+       * Returns the ratio of the valueB.
+       *
+       * @attribute ratioB
+       * @type number
+       * @default 0
+       */
+      ratioB: 0,
+
+      /**
+       * Returns the ratio interval between valueA and valueB.
+       *
+       * @attribute ratioB
+       * @type number
+       * @default 0
+       */
+      interval: 0,
+
+      /**
+       * The number that indicates the minimum value of the interval.
+       *
+       * @attribute minInterval
+       * @type number
+       * @default 0
+       */
+      minInterval: 0,
+
+      observe: {
+        'min max step': 'update',
+        valueA: 'updateValueA',
+        valueB: 'updateValueB',
+        minInterval: 'updateMinInterval'
+      },
+
+      calcRatio: function (value) {
+        return (this.clampValue(value) - this.min) / (this.max - this.min);
+      },
+
+      clampValue: function (value) {
+        return Math.min(this.max, Math.max(this.min, this.calcStep(value)));
+      },
+
+      calcStep: function (value) {
+        return this.step ? (Math.round(value / this.step) / (1 / this.step)) : value;
+      },
+
+      updateMinInterval: function (oldValue, newValue) {
+        this.minInterval = this.clampValue(this.minInterval);
+        if (this.minInterval < 0) {
+          this.minInterval = 0;
+        }
+        this.updateValueA();
+        this.updateValueB();
+        this.update();
+      },
+
+      updateValueA: function () {
+        var v = this.clampValue(this.valueA);
+        this.valueA = Math.min((this.oldValueA = isNaN(v) ? this.oldValueA : v), this.valueB - this.minInterval);
+        this.update();
+      },
+
+      updateValueB: function () {
+        var v = this.clampValue(this.valueB);
+        this.valueB = Math.max((this.oldValueB = isNaN(v) ? this.oldValueB : v), this.valueA + this.minInterval);
+        this.update();
+      },
+
+      update: function () {
+        this.ratioA = this.calcRatio(this.valueA) * 100;
+        this.ratioB = this.calcRatio(this.valueB) * 100;
+        this.interval = this.ratioB - this.ratioA;
+      }
+    });
+
+  </script>
+
+</polymer-element>

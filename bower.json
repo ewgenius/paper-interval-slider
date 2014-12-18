@@ -2,6 +2,8 @@
   "name": "paper-interval-slider#gh-pages",
   "private": true,
   "dependencies": {
-    "paper-interval-slider": "ewgenius/paper-interval-slider#master"
+    "paper-interval-slider": "ewgenius/paper-interval-slider#master",
+    "core-interval": "~0.0.1",
+    "paper-interval-progress": "~0.0.1"
   }
 }
