@@ -61,7 +61,7 @@ To change the slider pin's font color:
 <link rel="import" href="../paper-input/paper-input.html">
 
 <polymer-element name="paper-interval-slider" extends="core-interval"
-                 attributes="snaps pin disabled secondaryProgress editable immediateValue immediateValueA immediateValueB"
+                 attributes="snaps pin disabled secondaryProgress immediateValue immediateValueA immediateValueB"
                  role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100">
   <template>
 
@@ -73,14 +73,11 @@ To change the slider pin's font color:
     </template>
 
     <div id="sliderContainer"
-         class="{{ {disabled: disabled, pin: pin, snaps: snaps, ring: immediateValue <= min, expandA: expandA, expandB: expandB, dragging: dragging, transiting: transiting, editable: editable} | tokenList }}">
+         class="{{ {disabled: disabled, pin: pin, snaps: snaps, ring: immediateValue <= min, expandA: expandA, expandB: expandB, dragging: dragging, transiting: transiting} | tokenList }}">
 
       <div class="bar-container">
         <paper-interval-progress id="sliderBar" aria-hidden="true" min="{{min}}" max="{{max}}"
-                                 valueA="{{immediateValueA}}" valueB="{{immediateValueB}}"
-                                 on-down="{{bardown}}" on-up="{{resetKnob}}"
-                                 on-trackstart="{{trackStart}}" on-trackx="{{trackx}}"
-                                 on-trackend="{{trackEnd}}"></paper-interval-progress>
+                                 valueA="{{immediateValueA}}" valueB="{{immediateValueB}}"></paper-interval-progress>
       </div>
 
       <template if="{{snaps && !disabled}}">
@@ -106,12 +103,6 @@ To change the slider pin's font color:
       </div>
 
     </div>
-
-    <template if="{{editable}}">
-      <paper-input id="input" class="slider-input" value="{{immediateValue}}" disabled?="{{disabled}}"
-                   on-change="{{inputChange}}"></paper-input>
-    </template>
-
   </template>
   <script>
 
@@ -170,24 +161,6 @@ To change the slider pin's font color:
       disabled: false,
 
       /**
-       * The number that represents the current secondary progress.
-       *
-       * @attribute secondaryProgress
-       * @type number
-       * @default 0
-       */
-      secondaryProgress: 0,
-
-      /**
-       * If true, an input is shown and user can use it to set the slider value.
-       *
-       * @attribute editable
-       * @type boolean
-       * @default false
-       */
-      editable: false,
-
-      /**
        * The immediate value of the point A.  This value is updated while the user
        * is dragging the slider.
        *
@@ -213,13 +186,15 @@ To change the slider pin's font color:
 
       ready: function () {
         this.update();
+        console.log(this.min, this.max);
       },
 
       update: function () {
         this.positionKnobA(this.calcRatio(this.valueA));
         this.positionKnobB(this.calcRatio(this.valueB));
-        console.log(this.immediateValueA, this.immediateValueB);
-        console.log(this.valueA, this.valueB);
+        //console.log(this.immediateValueA, this.immediateValueB);
+        //console.log(this.valueA, this.valueB);
+        //console.log(this.min, this.max);
         this.updateMarkers();
       },
 
