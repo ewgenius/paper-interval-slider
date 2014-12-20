@@ -55,10 +55,8 @@ To change the slider pin's font color:
 @homepage http://ewgenius.github.io/paper-interval-slider
 -->
 
-<link rel="import" href="../core-a11y-keys/core-a11y-keys.html">
 <link rel="import" href="../paper-progress/paper-progress.html">
 <link rel="import" href="../paper-interval-progress/paper-interval-progress.html">
-<link rel="import" href="../paper-input/paper-input.html">
 
 <polymer-element name="paper-interval-slider" extends="core-interval"
                  attributes="snaps pin disabled secondaryProgress immediateValue immediateValueA immediateValueB"
@@ -67,13 +65,8 @@ To change the slider pin's font color:
 
     <link rel="stylesheet" href="paper-interval-slider.css">
 
-    <template if="{{!disabled}}">
-      <core-a11y-keys target="{{}}" keys="left down pagedown home" on-keys-pressed="{{decrementKey}}"></core-a11y-keys>
-      <core-a11y-keys target="{{}}" keys="right up pageup end" on-keys-pressed="{{incrementKey}}"></core-a11y-keys>
-    </template>
-
     <div id="sliderContainer"
-         class="{{ {disabled: disabled, pin: pin, snaps: snaps, ring: immediateValue <= min, expandA: expandA, expandB: expandB, dragging: dragging, transiting: transiting} | tokenList }}">
+         class="{{ {disabled: disabled, pin: pin, snaps: snaps, expandA: expandA, expandB: expandB, dragging: dragging, transiting: transiting} | tokenList }}">
 
       <div class="bar-container">
         <paper-interval-progress id="sliderBar" aria-hidden="true" min="{{min}}" max="{{max}}"
@@ -88,18 +81,24 @@ To change the slider pin's font color:
         </div>
       </template>
 
-      <div id="sliderKnobA" class="knob" on-down="{{knobdown}}" on-up="{{resetKnob}}"
-           on-trackstart="{{trackStart}}" on-trackx="{{trackx}}" on-trackend="{{trackEnd}}"
-           on-transitionend="{{knobTransitionEnd}}"
-           center-justified center horizontal layout>
-        <div id="sliderKnobInner" class="knobInner" value="{{immediateValueA}}"></div>
+      <div id="sliderKnobA" class="knob" center-justified center horizontal layout>
+        <div id="sliderKnobInner" class="knobInner" value="{{immediateValueA}}"
+             on-down="{{knobdown}}"
+             on-up="{{resetKnob}}"
+             on-trackstart="{{trackStart}}"
+             on-trackx="{{trackx}}"
+             on-trackend="{{trackEnd}}"
+             on-transitionend="{{knobTransitionEnd}}"></div>
       </div>
 
-      <div id="sliderKnobB" class="knob" on-down="{{knobdown}}" on-up="{{resetKnob}}"
-           on-trackstart="{{trackStart}}" on-trackx="{{trackx}}" on-trackend="{{trackEnd}}"
-           on-transitionend="{{knobTransitionEnd}}"
-           center-justified center horizontal layout>
-        <div id="sliderKnobInnerB" class="knobInner" value="{{immediateValueB}}"></div>
+      <div id="sliderKnobB" class="knob" center-justified center horizontal layout>
+        <div id="sliderKnobInnerB" class="knobInner" value="{{immediateValueB}}"
+             on-down="{{knobdown}}"
+             on-up="{{resetKnob}}"
+             on-trackstart="{{trackStart}}"
+             on-trackx="{{trackx}}"
+             on-trackend="{{trackEnd}}"
+             on-transitionend="{{knobTransitionEnd}}"></div>
       </div>
 
     </div>
@@ -186,7 +185,7 @@ To change the slider pin's font color:
 
       ready: function () {
         this.update();
-        console.log(this.min, this.max);
+        //console.log(this.min, this.max);
       },
 
       update: function () {
