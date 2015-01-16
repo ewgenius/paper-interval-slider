@@ -11,116 +11,80 @@
 <html>
 <head>
   <title>paper-interval-slider</title>
-  
+
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  
+
   <script src="../webcomponentsjs/webcomponents.js"></script>
-  
+
   <link rel="import" href="paper-interval-slider.html">
   <link rel="import" href="../paper-slider/paper-slider.html">
   <link rel="import" href="../font-roboto/roboto.html">
-  
+
   <style shim-shadowdom>
-  
+
     body {
       font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
       margin: 0;
       padding: 24px;
     }
-    
-    paper-interval-slider {
-      width: 100%;
-    }
 
-    paper-slider {
-      width: 100%;
-    }
-    
-    section {
-      max-width: 1000px;
-      padding: 20px 0;
-      background-color: #f0f0f0;
-    }
-    
-    section > div {
-      padding: 14px;
-    }
-    
   </style>
-  
+
 </head>
+
+
+
 <body unresolved>
 
-  <section class="yellow-slider">
+<polymer-element name="x-progressbar" noscript>
 
-    <paper-interval-slider valueA="50" valueB="70" pin></paper-interval-slider>
+  <template>
 
-    <br><br>
+    <style>
 
-    <paper-slider value="50"></paper-slider>
+      :host {
+        display: block;
+      }
 
+      paper-interval-slider {
+        width: 100%;
+      }
 
-  </section>
-  
-  <br>
-  
-  <!--section>
-  
-    <div center horizontal layout>
-      <div>R</div>
-      <paper-interval-slider value="23" max="255" editable></paper-interval-slider>
-    </div>
-    
-    <br>
-    <br>
-    
-    <div center horizontal layout>
-      <div>G</div>
-      <paper-interval-slider value="183" max="255" editable></paper-interval-slider>
-    </div>
-    
-    <br>
-    <br>
-    
-    <div center horizontal layout>
-      <div>B</div>
-      <paper-interval-slider value="211" secondaryProgress="100" max="255" editable></paper-interval-slider>
-    </div>
-    
-  </section>
-  
-  <br>
-  
-  <section class="green-slider">
-  
-    <div>Brightness</div>
-    <br>
-    <paper-interval-slider pin value="50"></paper-interval-slider>
-  
-  </section>
-  
-  <br>
-  
-  <section class="green-slider">
-  
-    <div>
-      <span>Ratings</span><span id="ratingsLabel"></span>
-    </div>
-    <br>
-    <paper-interval-slider id="ratings" pin snaps max="10" step="1" value="5"></paper-interval-slider>
-  
-  </section>
-  
-  <script>
-  
-    var ratings = document.querySelector('#ratings');
-    ratings.addEventListener('core-change', function() {
-      document.querySelector('#ratingsLabel').textContent = ratings.value;
-    });
-  
-  </script-->
-  
+      paper-slider {
+        width: 100%;
+      }
+
+      section {
+        max-width: 1000px;
+        padding: 20px 0;
+        background-color: #f0f0f0;
+      }
+
+      section > div {
+        padding: 14px;
+      }
+
+    </style>
+
+    <section class="yellow-slider">
+
+      <paper-interval-slider id="slider" valueA="50" valueB="70" pin></paper-interval-slider>
+
+      <br>
+
+      <div>
+        min: {{$.slider.min}}<br>
+        max: {{$.slider.max}}<br>
+      </div>
+
+    </section>
+
+  </template>
+
+</polymer-element>
+
+<x-progressbar></x-progressbar>
 </body>
 </html>
