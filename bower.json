@@ -4,9 +4,9 @@
   "main": "paper-interval-slider.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "paper-interval-progress": "^1.0.0",
-    "iron-interval-behavior": "^1.0.0",
-    "paper-input": "^1.1.15"
+    "paper-interval-progress": "ewgenius/paper-interval-progress#^1.0.0",
+    "iron-interval-behavior": "ewgenius/iron-interval-behavior#^1.0.0",
+    "paper-input": "PolymerElements/paper-input#^1.1.15"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
