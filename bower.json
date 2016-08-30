@@ -5,7 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-interval-progress": "ewgenius/paper-interval-progress#^1.0.0",
-    "iron-interval-behavior": "PolymerElements/iron-interval-behavior#^1.0.0",
+    "iron-interval-behavior": "ewgenius/iron-interval-behavior#^1.0.0",
     "paper-input": "PolymerElements/paper-input#^1.1.15"
   },
   "devDependencies": {
